@@ -1,26 +1,29 @@
 plugins {
-    kotlin("jvm") version "1.9.24"
+    kotlin("jvm") version "1.9.20"
     application
 }
 
 group = "com.aihm"
 version = "1.0"
 
-repositories { mavenCentral() }
+repositories {
+    mavenCentral()
+}
 
-// No external dependencies — pure Kotlin/JVM, builds offline.
 dependencies {
-    testImplementation(kotlin("test"))
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 application {
     mainClass.set("com.aihm.dataprep.MainKt")
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
+kotlin {
+    jvmToolchain(11)
 }
 
-tasks.jar {
-    manifest { attributes["Main-Class"] = "com.aihm.dataprep.MainKt" }
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = "com.aihm.dataprep.MainKt"
+    }
 }

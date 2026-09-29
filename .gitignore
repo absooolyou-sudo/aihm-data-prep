@@ -17,3 +17,6 @@ Thumbs.db
 # Kotlin compiler artifacts
 *.jar
 sources.txt
+aihm-dataprep.jar
+sources.txt
+output/
